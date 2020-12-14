@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="resId">
+        <item>@drawable/coastalstrawberry</item>
+        <item>@drawable/kinnikinnick</item>
+        <item>@drawable/snowberry</item>
+        <item>@drawable/coniferoustrees</item>
+        <item>@drawable/dandelion</item>
+        <item>@drawable/swordferns</item>
+        <item>@drawable/lavendar</item>
+        <item>@drawable/salal</item>
+        <item>@drawable/westernwedcedar</item>
+    </integer-array>
+
+    <string-array name="title">
+        <item>Coastal Strawberry</item>
+        <item>Kinnikinnick</item>
+        <item>Snowberry</item>
+        <item>Coniferous Tree</item>
+        <item>Dandelion</item>
+        <item>Sword Ferns</item>
+        <item>Lavender</item>
+        <item>Salal</item>
+        <item>Western Red Cedar</item>
+    </string-array>
+
+    <string-array name="content">
+
+        <item>Category: Food</item>
+        <item>Category: Food</item>
+        <item>Category: Food</item>
+        <item>Category: Medical</item>
+        <item>Category: Medical</item>
+        <item>Category: Medical</item>
+        <item>Category: Traditional</item>
+        <item>Category: Traditional</item>
+        <item>Category: Traditional</item>
+    </string-array>
+
+</resources>
