@@ -2,7 +2,9 @@ package com.summerproject.indigenousGo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,11 +14,12 @@ import com.google.zxing.integration.android.IntentResult;
 public class QRCodeActivity extends AppCompatActivity {
     private IntentIntegrator qrScan;
 
+    public static final String EXTRA_MESSAGE = "com.summerproject.indigenousGo.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_q_r_code);
+        setContentView(R.layout.activity_qr_code);
         // new IntentIntegrator(this).initiateScan();
 
         qrScan = new IntentIntegrator(this);
@@ -24,8 +27,6 @@ public class QRCodeActivity extends AppCompatActivity {
         qrScan.setPrompt("Find QR Code");
         qrScan.initiateScan();
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -36,7 +37,12 @@ public class QRCodeActivity extends AppCompatActivity {
                 // todo
             } else {
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                // todo
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(result.getContents()));
+                try {
+                    QRCodeActivity.this.startActivity(webIntent);
+                } catch (ActivityNotFoundException ex) {
+                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

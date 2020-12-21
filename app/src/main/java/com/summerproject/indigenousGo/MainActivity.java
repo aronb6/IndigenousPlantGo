@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     public static final int qrcode = 1004;
     public static final int waypoints2 = 1005;
     public static final int toponym = 1006;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
