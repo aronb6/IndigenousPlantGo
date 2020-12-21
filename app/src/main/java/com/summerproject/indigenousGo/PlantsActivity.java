@@ -7,19 +7,27 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 public class PlantsActivity extends AppCompatActivity {
     private CustomAdapter adapter;
     private ListView listView;
+    Spinner mySpinner;
+
+    String[] categories={"Food", "Medicinal", "Traditional"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plants);
         adapter = new CustomAdapter();
         listView = (ListView) findViewById(R.id.listView);
+        mySpinner = findViewById(R.id.mySpinner);
+        mySpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories));
 
-        setData();
+        setData(0);
 
         listView.setAdapter(adapter);
 
@@ -38,7 +46,6 @@ public class PlantsActivity extends AppCompatActivity {
                 // 형변환을 시켜야 getResId() 메소드를 호출할 수 있습니다.
                 int imgRes = ((CustomDTO)adapter.getItem(position)).getResId();
 
-
                 // new Intent(현재 Activity의 Context, 시작할 Activity 클래스)
                 Intent intent = new Intent(PlantsActivity.this, DetailActivity.class);
                 // putExtra(key, value)
@@ -46,22 +53,39 @@ public class PlantsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                listView.setAdapter(null);
+                adapter = new CustomAdapter();
+                setData(position);
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     // 보통 ListView는 통신을 통해 가져온 데이터를 보여줍니다.
     // arrResId, titles, contents를 서버에서 가져온 데이터라고 생각하시면 됩니다.
-    private void setData() {
+    private void setData(int position) {
         TypedArray arrResId = getResources().obtainTypedArray(R.array.resId);
         String[] titles = getResources().getStringArray(R.array.title);
         String[] contents = getResources().getStringArray(R.array.content);
 
         for (int i = 0; i < arrResId.length(); i++) {
-            CustomDTO dto = new CustomDTO();
-            dto.setResId(arrResId.getResourceId(i, 0));
-            dto.setTitle(titles[i]);
-            dto.setContent(contents[i]);
+            if (contents[i].equals(("Category: " + categories[position]))){
+                CustomDTO dto = new CustomDTO();
+                dto.setResId(arrResId.getResourceId(i, 0));
+                dto.setTitle(titles[i]);
+                dto.setContent(contents[i]);
 
-            adapter.addItem(dto);
+                adapter.addItem(dto);
+            }
         }
     }
 }
