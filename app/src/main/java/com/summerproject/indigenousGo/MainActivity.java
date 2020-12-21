@@ -2,8 +2,10 @@ package com.summerproject.indigenousGo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent4 = new Intent(getApplicationContext(), QRCodeActivity.class);
                 startActivityForResult(intent4, qrcode);
+
+                // To test opening a youtube video in youtube app on Emulator as
+                // QR code can't be scanned on emulator.
+                /* Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.youtube.com/watch?v=49BCc6FJEK8"));
+                try {
+                    MainActivity.this.startActivity(webIntent);
+                } catch (ActivityNotFoundException ex) {
+                } */
             }
         });
 
