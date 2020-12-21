@@ -8,29 +8,43 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 public class HousepostActivity extends AppCompatActivity {
 
-    int img[] = {R.drawable.t1,R.drawable.t2,R.drawable.t3,R.drawable.t4,R.drawable.t5,R.drawable.t6,R.drawable.t7,R.drawable.t8};
+    //int img[] = {R.drawable.t1,R.drawable.t2,R.drawable.t3,R.drawable.t4,R.drawable.t5,R.drawable.t6,R.drawable.t7,R.drawable.t8};
+
+    private static final String HOUSEPOSTURL = "https://www.bcit.ca/housepost/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_housepost);
 
-        GridView gridViewImages = (GridView)findViewById(R.id.gridViewImages);
-        ImageGridAdapter imageGridAdapter = new ImageGridAdapter(this, img);
-        gridViewImages.setAdapter(imageGridAdapter);
+        //GridView gridViewImages = (GridView)findViewById(R.id.gridViewImages);
+        //ImageGridAdapter imageGridAdapter = new ImageGridAdapter(this, img);
+        //gridViewImages.setAdapter(imageGridAdapter);
+
+        WebView webView = (WebView) findViewById(R.id.webview);
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        webView.setWebViewClient(new WebViewClient());
+
+        webView.loadUrl(HOUSEPOSTURL);
 
     }
 }
 
+/*
 class ImageGridAdapter extends BaseAdapter {
     Context context = null;
-
 
     int[] imageIDs = null;
 
@@ -67,12 +81,7 @@ class ImageGridAdapter extends BaseAdapter {
 
             imageView.setImageBitmap(bmp);
 
-
-
-
-
             imageView.setOnClickListener(new View.OnClickListener() {
-
 
                 @Override
                 public void onClick(View v) {
@@ -80,10 +89,7 @@ class ImageGridAdapter extends BaseAdapter {
                 }
             });
         }
-
-
-
         return imageView;
     }
 
-}
+}*/
