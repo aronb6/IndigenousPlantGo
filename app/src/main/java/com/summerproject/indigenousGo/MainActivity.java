@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
     public static final int waypoints = 1002;
     public static final int plants = 1003;
     public static final int qrcode = 1004;
+    public static final int waypoints2 = 1005;
+    public static final int toponym = 1006;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnWaypoints.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), WaypointsActivity.class);
+                Intent intent2 = new Intent(getApplicationContext(), Waypoints2Activity.class);
                 startActivityForResult(intent2, waypoints);
             }
         });
