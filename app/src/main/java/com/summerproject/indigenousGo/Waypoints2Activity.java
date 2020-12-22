@@ -27,8 +27,8 @@ public class Waypoints2Activity extends AppCompatActivity {
     private ListView listView;
 
     String[] waypointNames = {"Plants", "Lavender","Kinnikinnick","Strawberry","Salal","Snowberry",
-            "Tobacco", "PointsofInterest", "TieredGardens", "TheGatheringPlace", "TheHousePost",
-            "TheSweatLodge"};
+            "Tobacco", "Points of Interest", "Tiered Gardens", "The Gathering Place", "The House Post",
+            "The Sweat Lodge"};
 
     //Plants
     private final LatLng LAVENDER  = new LatLng(49.254500, -122.998250);
@@ -57,14 +57,13 @@ public class Waypoints2Activity extends AppCompatActivity {
         //Add items to list of waypoints
         //make item section item if string matches "Plants" or "PointsofInterest"
         for (int i = 0; i < waypointNames.length; i++) {
-            if (waypointNames[i].equals("Plants")) {
-                waypointList.add(new SectionItem("Plants"));
+            //get string at current index in array list of waypoint names.
+            String wpName = waypointNames[i];
 
-            } else if (waypointNames[i].equals("PointsofInterest")) {
-                waypointList.add(new SectionItem("Points of Interest"));
-
+            if ((wpName.equals("Plants")) || (wpName.equals("Points of Interest"))) {
+                waypointList.add(new SectionItem(wpName));
             } else {
-                waypointList.add(new EntryItem(waypointNames[i]));
+                waypointList.add(new EntryItem(wpName));
             }
         }
 
@@ -76,9 +75,16 @@ public class Waypoints2Activity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(Waypoints2Activity.this, MapActivity.class);
-                intent.putExtra("name", waypointNames[position]);
-                startActivity(intent);
+                if ((id == 0) || (id == 7))
+                {
+                    Toast.makeText(Waypoints2Activity.this,
+                            "Choose a plant or point of interest", Toast.LENGTH_LONG).show();
+                } else {
+
+                    Intent intent = new Intent(Waypoints2Activity.this, MapActivity.class);
+                    intent.putExtra("name", waypointNames[position]);
+                    startActivity(intent);
+                }
 
                 //String number = String.valueOf(id);
 
