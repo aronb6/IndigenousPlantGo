@@ -54,6 +54,8 @@ public class Waypoints2Activity extends AppCompatActivity {
 
         ArrayList<Item> waypointList = new ArrayList<Waypoints2Activity.Item>();
 
+        //Add items to list of waypoints
+        //make item section item if string matches "Plants" or "PointsofInterest"
         for (int i = 0; i < waypointNames.length; i++) {
             if (waypointNames[i].equals("Plants")) {
                 waypointList.add(new SectionItem("Plants"));
