@@ -152,16 +152,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             case "Tobacco":
                 marker = TOBACCO;
                 break;
-            case "TieredGardens":
+            case "Tiered Gardens":
                 marker = TIEREDGARDENS;
                 break;
-            case "TheGatheringPlace":
+            case "The Gathering Place":
                 marker = THEGATHERINGPLACE;
                 break;
-            case "TheHousePost":
+            case "The House Post":
                 marker = THEHOUSEPOST;
                 break;
-            case "TheSweatLodge":
+            case "The Sweat Lodge":
                 marker = THESWEATLODGE;
                 break;
             default:
