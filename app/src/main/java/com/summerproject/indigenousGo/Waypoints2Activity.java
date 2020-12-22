@@ -75,16 +75,12 @@ public class Waypoints2Activity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                if ((id == 0) || (id == 7))
-                {
-                    Toast.makeText(Waypoints2Activity.this,
-                            "Choose a plant or point of interest", Toast.LENGTH_LONG).show();
-                } else {
+                Intent intent = new Intent(Waypoints2Activity.this, MapActivity.class);
+                intent.putExtra("name", waypointNames[(int) id]);
+                startActivity(intent);
 
-                    Intent intent = new Intent(Waypoints2Activity.this, MapActivity.class);
-                    intent.putExtra("name", waypointNames[position]);
-                    startActivity(intent);
-                }
+                //String number = String.valueOf(position);
+                //Toast.makeText(Waypoints2Activity.this, number, Toast.LENGTH_SHORT).show();
             }
 
         });
