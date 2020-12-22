@@ -85,10 +85,6 @@ public class Waypoints2Activity extends AppCompatActivity {
                     intent.putExtra("name", waypointNames[position]);
                     startActivity(intent);
                 }
-
-                //String number = String.valueOf(id);
-
-                //Toast.makeText(Waypoints2Activity.this, number, Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -158,6 +154,16 @@ public class Waypoints2Activity extends AppCompatActivity {
             this.context = context;
             this.item = item;
             //this.originalItem = item;
+        }
+
+        @Override
+        public boolean isEnabled(int position){
+            // Section title items in list, ie "Plants" and "Points of Interest"
+            // at positions 0 and 7 don't trigger click events
+            if((position == 0) || (position == 7)) {
+                return false; //
+            }
+            return super.isEnabled(position);
         }
 
         @Override
