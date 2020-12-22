@@ -194,7 +194,6 @@ public class Waypoints2Activity extends AppCompatActivity {
                 TextView listItemTitle = (TextView) convertView.findViewById(R.id.listItemTitle);
                 listItemTitle.setText(((EntryItem) item.get(position)).getTitle());
             }
-
             return convertView;
         }
     }
