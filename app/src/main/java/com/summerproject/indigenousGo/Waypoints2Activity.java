@@ -44,8 +44,6 @@ public class Waypoints2Activity extends AppCompatActivity {
     private final LatLng THEHOUSEPOST = new LatLng(49.2511455,-123.0031097);
     private final LatLng THESWEATLODGE = new LatLng(49.245982, -122.998682);
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,23 +53,18 @@ public class Waypoints2Activity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         ArrayList<Item> waypointList = new ArrayList<Waypoints2Activity.Item>();
-        // Header
-        waypointList.add(new SectionItem("Plants"));
-        // Waypoint Name
-        waypointList.add(new EntryItem("Lavender"));
-        waypointList.add(new EntryItem("Kinnikinnick"));
-        waypointList.add(new EntryItem("Strawberry"));
-        waypointList.add(new EntryItem("Salal"));
-        waypointList.add(new EntryItem("Snowberry"));
-        waypointList.add(new EntryItem("Tobacco"));
 
-        // Header
-        waypointList.add(new SectionItem("Points of Interest"));
-        // Waypoint Name
-        waypointList.add(new EntryItem("Tiered Gardens"));
-        waypointList.add(new EntryItem("The Gathering Place"));
-        waypointList.add(new EntryItem("The House Post"));
-        waypointList.add(new EntryItem("The Sweat Lodge"));
+        for (int i = 0; i < waypointNames.length; i++) {
+            if (waypointNames[i].equals("Plants")) {
+                waypointList.add(new SectionItem("Plants"));
+
+            } else if (waypointNames[i].equals("PointsofInterest")) {
+                waypointList.add(new SectionItem("Points of Interest"));
+
+            } else {
+                waypointList.add(new EntryItem(waypointNames[i]));
+            }
+        }
 
         // set adapter
         final WaypointAdapter adapter = new WaypointAdapter(this, waypointList);
@@ -88,8 +81,6 @@ public class Waypoints2Activity extends AppCompatActivity {
                 //String number = String.valueOf(id);
 
                 //Toast.makeText(Waypoints2Activity.this, number, Toast.LENGTH_SHORT).show();
-
-
             }
 
         });
@@ -183,15 +174,15 @@ public class Waypoints2Activity extends AppCompatActivity {
             if (item.get(position).isSection()) {
                 // if section header
                 convertView = inflater.inflate(R.layout.layout_section, parent, false);
-                TextView tvSectionTitle = (TextView) convertView.findViewById(R.id.listSectionTitle);
-                tvSectionTitle.setText(((SectionItem) item.get(position)).getTitle());
+                TextView listSectionTitle = (TextView) convertView.findViewById(R.id.listSectionTitle);
+                listSectionTitle.setText(((SectionItem) item.get(position)).getTitle());
             }
             else
             {
                 // if item
                 convertView = inflater.inflate(R.layout.layout_waypointitem, parent, false);
-                TextView tvItemTitle = (TextView) convertView.findViewById(R.id.listItemTitle);
-                tvItemTitle.setText(((EntryItem) item.get(position)).getTitle());
+                TextView listItemTitle = (TextView) convertView.findViewById(R.id.listItemTitle);
+                listItemTitle.setText(((EntryItem) item.get(position)).getTitle());
             }
 
             return convertView;
