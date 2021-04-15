@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Indigenous Plant Go</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="title_activity_housepost">House Post</string>
+    <string name="title_activity_waypoints">Waypoints</string>
+    <string name="title_activity_map">Waypoint Map</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="disclaimer">Disclaimer: This information about the plants is provided for
+                            educational purposes only, plants should not be eaten or prepared
+                            based on this information."</string>
+
 </resources>
