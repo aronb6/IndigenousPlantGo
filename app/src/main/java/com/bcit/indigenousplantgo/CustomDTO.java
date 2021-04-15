@@ -1,4 +1,4 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
 
 public class CustomDTO {
     private int resId;

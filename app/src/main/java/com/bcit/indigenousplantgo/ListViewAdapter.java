@@ -1,4 +1,4 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

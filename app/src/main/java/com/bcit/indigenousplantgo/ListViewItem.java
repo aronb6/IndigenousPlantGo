@@ -1,6 +1,6 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
+
 import android.graphics.drawable.Drawable;
-import android.widget.Button;
 
 public class ListViewItem {
     private Drawable iconDrawable ;

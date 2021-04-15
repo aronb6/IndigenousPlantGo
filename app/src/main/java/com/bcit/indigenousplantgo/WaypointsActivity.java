@@ -1,4 +1,4 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;

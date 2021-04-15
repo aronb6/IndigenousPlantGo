@@ -1,4 +1,4 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class IntroActivity2 extends AppCompatActivity {
-    ImageView imageView;
-    Handler handler = new Handler();
-    Runnable r = new Runnable() {
+    public class IntroActivity2 extends AppCompatActivity {
+        ImageView imageView;
+        Handler handler = new Handler();
+        Runnable r = new Runnable() {
         @Override
         public void run() {
 // 4초뒤에 다음화면(MainActivity)으로 넘어가기 Handler 사용

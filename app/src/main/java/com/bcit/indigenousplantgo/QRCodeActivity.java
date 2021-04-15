@@ -1,4 +1,4 @@
-package com.summerproject.indigenousGo;
+package com.bcit.indigenousplantgo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +14,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class QRCodeActivity extends AppCompatActivity {
     private IntentIntegrator qrScan;
 
-    public static final String EXTRA_MESSAGE = "com.summerproject.indigenousGo.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.bcit.indigenousplantgo.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
