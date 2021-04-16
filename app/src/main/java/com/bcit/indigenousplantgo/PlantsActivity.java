@@ -1,6 +1,7 @@
 package com.bcit.indigenousplantgo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -12,6 +13,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 public class PlantsActivity extends AppCompatActivity {
+
+    private static final String TAG = "PlantsActivity";
+
     private CustomAdapter adapter;
     private ListView listView;
     Spinner mySpinner;
@@ -22,6 +26,15 @@ public class PlantsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plants);
+
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);//To display toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         adapter = new CustomAdapter();
         listView = (ListView) findViewById(R.id.listView);
         mySpinner = findViewById(R.id.mySpinner);
