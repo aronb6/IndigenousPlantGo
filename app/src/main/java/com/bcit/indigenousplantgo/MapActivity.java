@@ -2,6 +2,7 @@ package com.bcit.indigenousplantgo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -12,6 +13,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -94,14 +96,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);//To display toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            //get waypoint name via intent and set the title in toolbar
+            intent = getIntent();
+            String waypointName =  intent.getStringExtra("name");
+            getSupportActionBar().setTitle(waypointName);
+        }
 
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-
-        // Retrieve the content view that renders the map.
-        setContentView(R.layout.activity_map);
 
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -112,8 +125,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         //Toast.makeText(MapActivity.this, receivedName, Toast.LENGTH_SHORT).show();
-
     }
+
     // Saves the state of the map when the activity is paused.
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -470,4 +483,3 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return data;
     }
 }
-
