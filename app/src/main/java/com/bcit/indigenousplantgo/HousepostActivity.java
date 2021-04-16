@@ -1,6 +1,9 @@
 package com.bcit.indigenousplantgo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -18,9 +21,13 @@ public class HousepostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_housepost);
 
-        //GridView gridViewImages = (GridView)findViewById(R.id.gridViewImages);
-        //ImageGridAdapter imageGridAdapter = new ImageGridAdapter(this, img);
-        //gridViewImages.setAdapter(imageGridAdapter);
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);//To display toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         WebView webView = (WebView) findViewById(R.id.webview);
 
@@ -31,6 +38,14 @@ public class HousepostActivity extends AppCompatActivity {
 
         webView.loadUrl(HOUSEPOSTURL);
 
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+            // Turning on the dark mode
+            WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_AUTO);
+        }
+
+        //GridView gridViewImages = (GridView)findViewById(R.id.gridViewImages);
+        //ImageGridAdapter imageGridAdapter = new ImageGridAdapter(this, img);
+        //gridViewImages.setAdapter(imageGridAdapter);
     }
 }
 
