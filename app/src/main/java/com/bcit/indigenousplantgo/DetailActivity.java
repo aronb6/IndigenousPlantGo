@@ -10,8 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private static final String TAG = "MyActivity";
+
     private Intent intent;
     private ImageView imageView;
     private TextView textView1;
@@ -24,10 +28,19 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);//To display toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         // MainActivity에서 보낸 imgRes를 받기위해 getIntent()로 초기화
         intent = getIntent();
         imageView = (ImageView) findViewById(R.id.imageView);
-        textView1 = (TextView) findViewById(R.id.textViewDetail1);
+        textView1 = (TextView) findViewById(R.id.txtPlantDescription);
         imgPlay = (ImageButton) findViewById(R.id.imgPlay);
 
         // "imgRes" key로 받은 값은 int 형이기 때문에 getIntExtra(key, defaultValue);
@@ -63,10 +76,9 @@ public class DetailActivity extends AppCompatActivity {
         soundPool9  = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         soundPlay9 = soundPool9.load(this, R.raw.westernwedcedar, 1);
 
-
-
-
-        if (intent.getIntExtra("imgRes", 0) == 2131230825) {
+        // Coastal Strawberry
+        if (intent.getIntExtra("imgRes", 0) == 2131230824) {
+            getSupportActionBar().setTitle("Coastal Strawberry");
             textView1.setText("This evergreen ground cover has three leaves, and white flowers that bloom in the summer.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -74,7 +86,10 @@ public class DetailActivity extends AppCompatActivity {
                     soundPool1.play(soundPlay1, 1f, 1f, 0, 0, 1f);
                 }
             });
+
+            // Kinnikinnick
         } else if (intent.getIntExtra("imgRes", 0) == 2131230868) {
+            getSupportActionBar().setTitle("Kinnikinnick");
             textView1.setText("Kinnikinnick is an evergreen ground cover. It has small white or pink flowers that typically bloom in May and June, and red berries later in the season.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -83,7 +98,10 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
-        else if (intent.getIntExtra("imgRes", 0) == 2131230903) {
+
+        // Snowberry
+        else if (intent.getIntExtra("imgRes", 0) == 2131230907) {
+            getSupportActionBar().setTitle("Snowberry");
             textView1.setText("These shrubs have white flowers in spring, and white berries through the fall and winter.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -92,7 +110,10 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
-        else if (intent.getIntExtra("imgRes", 0) == 2131230845) {
+
+        // Coniferous Tree
+        else if (intent.getIntExtra("imgRes", 0) == 2131230844) {
+            getSupportActionBar().setTitle("Coniferous Tree");
             textView1.setText("Sometimes called evergreens, most coniferous trees keep their foliage year-round. Products made from coniferous trees include paper, many kinds of lumber, furniture and anti-cancer drugs.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -101,7 +122,10 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
-        else if (intent.getIntExtra("imgRes", 0) == 2131230846) {
+
+        // Dandelion
+        else if (intent.getIntExtra("imgRes", 0) == 2131230845) {
+            getSupportActionBar().setTitle("Dandelion");
             textView1.setText("Dandelion [Fr, dent-de-lion, \"lion's tooth\"], perennial, herbaceous plant of family Compositae or Asteraceae. Valued for its medicinal properties, the dandelion has been used to stimulate the kidneys and to combat liver disorders, weak digestion, anemia and eczema.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -110,7 +134,10 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
-        else if (intent.getIntExtra("imgRes", 0) == 2131230904) {
+
+        // Sword Ferns
+        else if (intent.getIntExtra("imgRes", 0) == 2131230908) {
+            getSupportActionBar().setTitle("Sword Ferns");
             textView1.setText("Sword fern gets its name from its elongated blade-like fronds. The robust, handsome leaves can grow several feet long and the plant can have as many as a hundred leaves. This plant can be used as a pain reliever!");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -119,8 +146,11 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
+
+        // Lavender
         else if (intent.getIntExtra("imgRes", 0) == 2131230869) {
-            textView1.setText("Lavander is a prerennial shrub with purple flowers that bloom during the summer.");
+            getSupportActionBar().setTitle("Lavender");
+            textView1.setText("Lavender is a perennial shrub with purple flowers that bloom during the summer.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -129,7 +159,9 @@ public class DetailActivity extends AppCompatActivity {
             });
         }
 
-        else if (intent.getIntExtra("imgRes", 0) == 2131230902) {
+        // Salal
+        else if (intent.getIntExtra("imgRes", 0) == 2131230906) {
+            getSupportActionBar().setTitle("Salal");
             textView1.setText("Salal is a perennial evergreen shrub.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
@@ -138,7 +170,10 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
-        else if (intent.getIntExtra("imgRes", 0) == 2131230930) {
+
+        // Western Red Cedar
+        else if (intent.getIntExtra("imgRes", 0) == 2131230914) {
+            getSupportActionBar().setTitle("Western Red Cedar");
             textView1.setText("Western Red Cedar is a large evergreen tree. The Western Red Cedar has been called \"the cornerstone of Northwest Coast aboriginal culture,\" and has great spiritual significance. Coastal people used all parts of the tree. They used the wood for dugout canoes, house planks, bentwood boxes, clothing, and many tools such as arrow shafts, masks, and paddles.");
             imgPlay.setOnClickListener(new ImageButton.OnClickListener() {
                 @Override
